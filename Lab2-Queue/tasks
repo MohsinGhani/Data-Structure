@@ -1,0 +1,54 @@
+// task1-lab2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+
+using namespace std;
+int maxSize = 6;
+int queue[6];
+int front = 0;
+int rear = -1;
+
+bool enqueue(){
+	for (int i = front; i <= maxSize; i++){
+		if (rear >= maxSize - 1){
+			std::cout << "Queue is Full!\n";
+			return false;
+		}
+		else{
+			int item;
+			rear = rear + 1;
+			cout << "Enter the item at index " << i << ": ";
+			cin >> item;
+			queue[rear] = item;
+		}
+	}
+	return true;
+}
+
+bool diplay(){
+	for (int j = 0; j <= 5; j++){
+		std::cout << "Item at index: " << j << ": " << queue[j] << "\n";
+	}
+	return false;
+}
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	mainhome:
+	int option;
+	std::cout << "Enter 1 for Equeue and 2 for Disply: ";
+	std::cin >> option;
+	switch (option){
+		case 1:
+		if (!(enqueue())){ goto mainhome; };
+		break;
+
+		case 2:
+		diplay();
+		break;
+	}
+	return 0;
+}
+
