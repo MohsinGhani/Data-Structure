@@ -53,6 +53,20 @@ bool diplay(){
 	return false;
 }
 
+bool search(int searchItem){
+	bool flag = false;
+	for(int i = front; i <= rear; i++){
+		if(queue[i] == searchItem) {
+			std::cout << searchItem << " is exist in Queue. \n";
+			flag = true;
+		}
+	}
+	if(!flag){
+			std:: cout << "Searching Faild: Number does not exist in queue! \n";
+		}
+	return true;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	mainhome:
@@ -75,6 +89,15 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cout << "Dequeue Item = " << item << "\n";
 		goto mainhome;
 		break;
+
+		case 4:
+		int searchItem;
+		std::cout << "Enter a Number for search: ";
+		std::cin >> searchItem;
+		search(searchItem);
+		goto mainhome;
+		break;
 	}
 	return 0;
 }
+
