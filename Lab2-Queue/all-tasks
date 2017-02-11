@@ -1,14 +1,16 @@
-// task1-lab2.cpp : Defines the entry point for the console application.
+// ConsoleApplication2.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
 #include <iostream>
 
 using namespace std;
+
 int maxSize = 6;
 int queue[6];
 int front = 0;
 int rear = -1;
+int item;
 
 bool enqueue(){
 	for (int i = front; i <= maxSize; i++){
@@ -16,8 +18,7 @@ bool enqueue(){
 			std::cout << "Queue is Full!\n";
 			return false;
 		}
-		else{
-			int item;
+		else{	
 			rear = rear + 1;
 			cout << "Enter the item at index " << i << ": ";
 			cin >> item;
@@ -27,9 +28,27 @@ bool enqueue(){
 	return true;
 }
 
+bool dequeue() {
+	if(front > rear) {
+		std::cout << "Queue is Empty\n";
+		return false;
+	}
+	else {
+		item = queue[front];
+		front = front + 1;		
+		return true;
+	}
+}
+
 bool diplay(){
-	for (int j = 0; j <= 5; j++){
-		std::cout << "Item at index: " << j << ": " << queue[j] << "\n";
+	if(front > rear){
+		std::cout << "Queue is Empty\n";
+	}
+	else{
+		for (int i = rear; i >= front; i--){
+			std::cout << queue[i] << "\t";
+		}
+		std::cout << "\n";
 	}
 	return false;
 }
@@ -42,13 +61,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cin >> option;
 	switch (option){
 		case 1:
-		if (!(enqueue())){ goto mainhome; };
+		enqueue();
+		goto mainhome;
 		break;
 
 		case 2:
 		diplay();
+		goto mainhome;
+		break;
+
+		case 3:
+		dequeue();
+		std::cout << "Dequeue Item = " << item << "\n";
+		goto mainhome;
 		break;
 	}
 	return 0;
 }
-
