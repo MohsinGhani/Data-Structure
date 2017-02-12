@@ -13,6 +13,7 @@ int rear = -1;
 int item;
 
 bool enqueue(){
+	std::cout << "*** Enter The Queue Items ***\n";
 	for (int i = front; i <= maxSize; i++){
 		if (rear >= maxSize - 1){
 			std::cout << "Queue is Full!\n";
@@ -41,6 +42,7 @@ bool dequeue() {
 }
 
 bool diplay(){
+	std::cout << "\t*** Queue Items ***\n";
 	if(front > rear){
 		std::cout << "Queue is Empty\n";
 	}
@@ -48,7 +50,7 @@ bool diplay(){
 		for (int i = rear; i >= front; i--){
 			std::cout << queue[i] << "\t";
 		}
-		std::cout << "\n";
+		std::cout << "\n\n";
 	}
 	return false;
 }
@@ -57,40 +59,45 @@ bool search(int searchItem){
 	bool flag = false;
 	for(int i = front; i <= rear; i++){
 		if(queue[i] == searchItem) {
-			std::cout << searchItem << " is exist in Queue. \n";
+			std::cout << searchItem << " is exist in Queue. \n\n";
 			flag = true;
 		}
 	}
 	if(!flag){
-			std:: cout << "Searching Faild: Number does not exist in queue! \n";
+			std:: cout << "Searching Faild: Number does not exist in queue! \n\n";
 		}
 	return true;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	std::cout << "\t\t*** DATA STRUCTURE LAB 2 ***\n";
 	mainhome:
-	int option;
-	std::cout << "Enter 1 for Equeue and 2 for Disply: ";
+	char option;
+	std::cout << "\t\tEnter 'e' for Equeue\n\t\tEnter 'd' for Dequeue\n\t\tEnter 'p' for Display\n\t\tEnter 's' for search\n\t\tSelect a character: ";
 	std::cin >> option;
 	switch (option){
-		case 1:
+		case 'e':
+		system("cls");
 		enqueue();
 		goto mainhome;
 		break;
 
-		case 2:
+		case 'p':
+		system("cls");
 		diplay();
 		goto mainhome;
 		break;
 
-		case 3:
+		case 'd':
+		system("cls");
 		dequeue();
 		std::cout << "Dequeue Item = " << item << "\n";
 		goto mainhome;
 		break;
 
-		case 4:
+		case 's':
+		system("cls");
 		int searchItem;
 		std::cout << "Enter a Number for search: ";
 		std::cin >> searchItem;
@@ -100,4 +107,3 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	return 0;
 }
-
